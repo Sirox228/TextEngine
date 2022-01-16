@@ -1,0 +1,15 @@
+1=youre in the darkness at the forest, you scared|1-1)call for help,2-2)go straight,3-3)do nothing|2,4,6|&Secret-8384849-7
+2=youre calling for help|&PrintNext-3
+3=nothing happened, youre scared, determination disappearing, you can't do anything|&KillGame-0
+4=youre going straight|&PrintNext-5
+5=you find out that something strange happens, the way youre going is looping over and over, it seems that now you trapped here|&KillGame-0
+6=youre just staying and waiting for something, nothing happened|&PrintNext-1
+7=youre in dispair, you understanding that nothing can help you|&PrintNext-8
+8=youre eyes suddenly seeing a light far in the forest|&PrintNext-9
+9=youre started running to that light|&PrintNext-10
+10=youre here, light was a campfire, you found out that you can escape|&PrintNext-11
+11=you went to a strange tree near the campfire|&PrintNext-12
+12=you touching it|&PrintNext-13
+13=you realised that somehow youre got out of the forest, youre staying in front of forest|&PrintNext-14
+14=you escaped|&KillGame-0
+15=азаза русский работает ЮХУХУХХУХУХУХУ|&PrintNext-0

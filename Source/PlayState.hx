@@ -77,6 +77,7 @@ class PlayState extends FlxState
 
 	public static function getNextThing(content:Array<String>, state:String):String {
 		knownChoices = [];
+		nextStatesArray = [];
 		if (content == null || content.length < 0 || state == "" || state < 0) {
 			trace("game text is not initialised or state changing have an error, creating test Text");
 			return FlxG.random.int(0, 1000) + testText;

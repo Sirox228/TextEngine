@@ -4,6 +4,7 @@ import flixel.FlxGame;
 import openfl.display.Sprite;
 import android.os.Environment;
 import android.os.Build.VERSION;
+import android.PermissionsList;
 import android.Permissions;
 import lime.app.Application;
 import sys.FileSystem;
@@ -24,8 +25,8 @@ class Main extends Sprite
 			return storagePath;
 		} else {
 			if (VERSION.SDK_INT > 23 || VERSION.SDK_INT == 23) {
-			    var grantedPermsList:Array<Permissions> = AndroidTools.getGrantedPermissions();
-			    if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
+			    var grantedPermsList:Array<PermissionsList> = Permissions.getGrantedPermissions();
+			    if (!grantedPermsList.contains(PermissionsList.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(PermissionsList.WRITE_EXTERNAL_STORAGE)) {
 				    Application.current.window.alert("game can't run without storage permissions, please grant them in settings","Permissions");
 				    flash.system.System.exit(0);
 			    }

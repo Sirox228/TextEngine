@@ -78,9 +78,10 @@ class PlayState extends FlxState
 	public static function getNextThing(content:Array<String>, state:String):String {
 		knownChoices = [];
 		nextStatesArray = [];
-		if (content == null || content.length < 0 || state == "" || state < 0) {
+		var THESHIT:String = "";
+		if (content == null || content.length < 0 || state == "" || state.length < 0) {
 			trace("game text is not initialised or state changing have an error, creating test Text");
-			return FlxG.random.int(0, 1000) + testText;
+			THESHIT = FlxG.random.int(0, 1000) + testText;
 		} else {
 			trace(content);
 			var lineContent = content[Std.parseInt(state)].split('|');
@@ -117,8 +118,9 @@ class PlayState extends FlxState
 				shit = finalText;
 			}
 			allowInput = true;
-			return shit + endl; //stupid text getting ;-;
+			THESHIT = shit + endl;
 		}
+		return THESHIT; //stupid text getting ;-;
 	}
 
 	public static function parse(path:String):Array<String>
@@ -205,11 +207,6 @@ class PlayState extends FlxState
 		if (printText && requestedPerms) {
 		    showString(getNextThing(gameContent, nextState));
 		}
-		for (touch in FlxG.touches.list) {
-			if (touch.overlaps(inputText) && touch.justPressed && requestedPerms) {
-				FlxG.stage.window.textInputEnabled = true;
-			}
-		}
 		#if android
 		if (FlxG.android.justReleased.BACK) {
 			FlxG.stage.window.textInputEnabled = false;
@@ -226,7 +223,7 @@ class PlayState extends FlxState
 			if (km && FlxG.keys.firstJustPressed() != FlxKey.NONE) {
 				var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
 				var keyName:String = Std.string(keyPressed);
-				if (allowedKeys.exists(keyName)) {
+				if (allowedKeys.contains(keyName)) {
 					parseKey(keyName);
 				}
 			}
@@ -245,7 +242,7 @@ class PlayState extends FlxState
 					}
 				}
 				if (touch.justPressed && !hold && !km) {
-					if (knownChoices.exists(nextState)) {
+					if (knownChoices.contains(nextState)) {
 					    allowInput = false;
 					    var ns:Int = Std.parseInt(nextState);
 					    nextState = Std.string(nextStatesArray[ns]);

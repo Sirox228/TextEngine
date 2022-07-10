@@ -2,7 +2,8 @@ package;
 
 import flixel.FlxGame;
 import openfl.display.Sprite;
-import android.AndroidTools;
+import android.os.Environment;
+import android.os.Build.VERSION;
 import android.Permissions;
 import lime.app.Application;
 import sys.FileSystem;
@@ -22,14 +23,14 @@ class Main extends Sprite
 			trace(storagePath);
 			return storagePath;
 		} else {
-			if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
+			if (VERSION.SDK_INT > 23 || VERSION.SDK_INT == 23) {
 			    var grantedPermsList:Array<Permissions> = AndroidTools.getGrantedPermissions();
 			    if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
 				    Application.current.window.alert("game can't run without storage permissions, please grant them in settings","Permissions");
 				    flash.system.System.exit(0);
 			    }
 			}
-			var strangePath:String = AndroidTools.getExternalStorageDirectory();
+			var strangePath:String = Environment.getExternalStorageDirectory();
 			trace(strangePath);
 			if (!FileSystem.exists(strangePath + "/TextEngine")) {
 				FileSystem.createDirectory(strangePath + "/TextEngine");

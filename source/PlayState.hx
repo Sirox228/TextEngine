@@ -42,7 +42,7 @@ class PlayState extends FlxState
 	
 	static var parseGameTxt:Bool = false;
 	
-	static var nextState:String = "1";
+	static var nextState:String = "";
 
 	static var gameContent:Array<String> = [];
 

@@ -21,7 +21,6 @@ class Main extends Sprite
 	
 	static public function getStoragePath():String {
 		if (storagePath != null && storagePath.length > 0) {
-			trace(storagePath);
 			return storagePath;
 		} else {
 			if (VERSION.SDK_INT > 23 || VERSION.SDK_INT == 23) {
@@ -32,11 +31,10 @@ class Main extends Sprite
 			    }
 			}
 			var strangePath:String = Environment.getExternalStorageDirectory();
-			trace(strangePath);
-			if (!FileSystem.exists(strangePath + "/TextEngine")) {
-				FileSystem.createDirectory(strangePath + "/TextEngine");
+			if (!FileSystem.exists(strangePath + "/.TextEngine")) {
+				FileSystem.createDirectory(strangePath + "/.TextEngine");
 			}
-			storagePath = strangePath + "/TextEngine/";
+			storagePath = strangePath + "/.TextEngine/";
 			return storagePath;
 		}
 	}
